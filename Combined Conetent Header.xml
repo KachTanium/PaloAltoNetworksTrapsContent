@@ -1,0 +1,12 @@
+<content>
+    <solution>
+        <id></id>
+        <name>Palo Alto Networks Traps Content</name>
+        <content_url></content_url>
+        <content_doc_url></content_doc_url>
+        <version>1.0.0.0000</version>
+        <description>Initial Content that will be imported by Palo Alto Networks Traps</description>
+        <default_content>0</default_content>
+        <category>Palo Alto Networks</category>
+        <deleted>0</deleted>
+    </solution>
