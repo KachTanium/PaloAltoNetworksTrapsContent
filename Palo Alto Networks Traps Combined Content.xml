@@ -10,39 +10,10 @@
         <category>Palo Alto Networks</category>
         <deleted>0</deleted>
     </solution>
-<!-- Exported using version "6.5.314.4316" on Wed, Feb 17, 2016 11:08:30 AM  -->
-<sensors>
-  <sensor>
-    <name>Palo Alto Networs Traps Services</name>
-    <result_type>1</result_type>
-    <seconds>86400</seconds>
-    <seconds_never_flag>1</seconds_never_flag>
-    <qseconds>60</qseconds>
-    <event_flag>0</event_flag>
-    <ignore_case_flag>1</ignore_case_flag>
-    <weight>0</weight>
-    <category>Miscellaneous</category>
-    <exclude_from_parse>1</exclude_from_parse>
-    <delimiter>,</delimiter>
-    <description/>
-    <what_hash>349604381</what_hash>
-    <hidden_flag>0</hidden_flag>
-    <columns/>
-    <queries>
-      <sensor_query>
-        <query>Select DisplayName from Win32_Service Where Name='Cyserver' or Name='Cyverak' or Name='Cyvrmtgn' or Name='Cyvrfsfd' or Name='CyveraService' and State LIKE 'Running'</query>
-        <sensor_type>1</sensor_type>
-        <os>0</os>
-        <signature/>
-      </sensor_query>
-    </queries>
-    <meta_data/>
-    <parameters/>
-  </sensor>
-</sensors><!-- Exported using version "6.5.314.4316" on Wed, Feb 17, 2016 11:07:36 AM  -->
+<!-- Exported using version "6.5.314.4316" on Thu, Feb 25, 2016 11:10:56 AM  -->
 <dashboard_groups>
   <dashboard_group>
-    <name>Palo Alto Traps</name>
+    <name>Palo Alto Networks Traps</name>
     <public_flag>0</public_flag>
     <editable_flag>1</editable_flag>
     <text/>
@@ -3587,5 +3558,34 @@ Example: workstation-1.company.com</description>
     </question>
     <packages/>
   </saved_question>
-</saved_questions>
+</saved_questions><!-- Exported using version "6.5.314.4316" on Wed, Feb 17, 2016 11:08:30 AM  -->
+<sensors>
+  <sensor>
+    <name>Palo Alto Networs Traps Services</name>
+    <result_type>1</result_type>
+    <seconds>86400</seconds>
+    <seconds_never_flag>1</seconds_never_flag>
+    <qseconds>60</qseconds>
+    <event_flag>0</event_flag>
+    <ignore_case_flag>1</ignore_case_flag>
+    <weight>0</weight>
+    <category>Miscellaneous</category>
+    <exclude_from_parse>1</exclude_from_parse>
+    <delimiter>,</delimiter>
+    <description/>
+    <what_hash>349604381</what_hash>
+    <hidden_flag>0</hidden_flag>
+    <columns/>
+    <queries>
+      <sensor_query>
+        <query>Select DisplayName from Win32_Service Where Name='Cyserver' or Name='Cyverak' or Name='Cyvrmtgn' or Name='Cyvrfsfd' or Name='CyveraService' and State LIKE 'Running'</query>
+        <sensor_type>1</sensor_type>
+        <os>0</os>
+        <signature/>
+      </sensor_query>
+    </queries>
+    <meta_data/>
+    <parameters/>
+  </sensor>
+</sensors>
 </content>
