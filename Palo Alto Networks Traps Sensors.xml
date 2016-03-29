@@ -1,11 +1,11 @@
-<!-- Exported using version "6.5.314.4316" on Wed, Feb 17, 2016 11:08:30 AM  -->
+<!-- Exported using version "6.5.314.4316" on Tue, Mar 29, 2016 10:36:29 AM  -->
 <sensors>
   <sensor>
-    <name>Palo Alto Networs Traps Services</name>
+    <name>Palo Alto Networks Traps Services</name>
     <result_type>1</result_type>
     <seconds>86400</seconds>
     <seconds_never_flag>1</seconds_never_flag>
-    <qseconds>60</qseconds>
+    <qseconds>900</qseconds>
     <event_flag>0</event_flag>
     <ignore_case_flag>1</ignore_case_flag>
     <weight>0</weight>
@@ -13,7 +13,7 @@
     <exclude_from_parse>1</exclude_from_parse>
     <delimiter>,</delimiter>
     <description/>
-    <what_hash>349604381</what_hash>
+    <what_hash>2982090176</what_hash>
     <hidden_flag>0</hidden_flag>
     <columns/>
     <queries>

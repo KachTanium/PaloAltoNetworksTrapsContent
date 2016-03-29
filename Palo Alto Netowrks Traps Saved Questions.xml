@@ -1,193 +1,169 @@
-<!-- Exported using version "6.5.314.4316" on Tue, Mar 29, 2016 10:37:48 AM  -->
-<dashboard_groups>
-  <dashboard_group>
-    <name>Palo Alto Networks Traps</name>
-    <public_flag>0</public_flag>
-    <editable_flag>1</editable_flag>
-    <text/>
-    <icon>iVBORw0KGgoAAAANSUhEUgAAABsAAAAbCAYAAACN1PRVAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA
-l3RFWHRDb21tZW50AGNIUk0gY2h1bmtsZW4gMzIgaWdub3JlZDoNQVNDSUk6IC4ueiUuLsOEw4ku
-LsuYy4cuLsOEw4guLnUwLi7DjWAuLjrDsi4uLm8NSEVYOiAwMDAwN0EyNTAwMDA4MDgzMDAwMEY5
-RkYwMDAwODBFOTAwMDA3NTMwMDAwMEVBNjAwMDAwM0E5ODAwMDAxNzZGo/aNewAAAYRJREFUeJy8
-lT1Lw1AUhruJg4pCdSji7McfEHHxo4Ogk4tQswiCinN2Z3GT/Am3Tv6COBWyqfgCOroYL2h56U02
-uSe4l9cBDIZy8D7k5OW0YYxr/haZpGUQgASnogwH/pnw94r5gWQvEoGd01ePlqsDbpKiV1dvl8lO
-wZZoCivjHMqZe0aRFK4Xyajsw49urKivGaRLK5ZlFdsy2hstVPnW5S7JGXRhER5nUpZMmFZImWpo
-/kB7II9cODJKePZH2H7MaE78Qnzh/JBg7ZvRmOsMQOnTbDQVi0yDhf/WRf4EPwDu7AlJCdgUrj/i
-2n8z1zspqVciuKvrG3lnINP6ANSG7qOgdm8aQ78xH1pGykA2ilVFuU8pCdqNW9mc3EjS2PltfI6O
-8hSIZsWP0/2cuGeVsy/yiL/5IKbRll5bo0M4uWzGbxn2kJFsX95zzdbpvqyi3aqfNgGtTPaUbon8
-OnID5skzNIp3lI7kFjAFvIFnsKK430tWG78AAAD//wMAs/0aidP3vf4AAAAASUVORK5CYII=</icon>
-    <dashboards>
-      <dashboard>
-        <name>Traps Version</name>
-        <public_flag>0</public_flag>
-        <notify_flag>0</notify_flag>
-        <offline_flag>0</offline_flag>
-        <text/>
-        <saved_questions>
-          <saved_question>
-            <name>Palo Alto Networks Traps Version</name>
-            <public_flag>1</public_flag>
-            <issue_seconds>120</issue_seconds>
-            <issue_seconds_never_flag>0</issue_seconds_never_flag>
-            <expire_seconds>600</expire_seconds>
-            <merge_flag>0</merge_flag>
-            <drilldown_flag>0</drilldown_flag>
-            <default_tab>1</default_tab>
-            <default_grid_zoom_level>0</default_grid_zoom_level>
-            <default_line_zoom_level>12</default_line_zoom_level>
-            <text>Get Computer Name and Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version] from all machines</text>
-            <row_count_flag>0</row_count_flag>
-            <disabled_flag>1</disabled_flag>
-            <keep_seconds>3600</keep_seconds>
-            <meta_data/>
-            <question>
-              <text>Get Computer Name and Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version] from all machines</text>
-              <skip_lock_flag>0</skip_lock_flag>
-              <force_computer_id_flag>0</force_computer_id_flag>
-              <select_specs>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>3409330187</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <sensor>
-                    <name>Computer Name</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>86400</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category>Reserved</category>
-                    <exclude_from_parse>0</exclude_from_parse>
-                    <delimiter/>
-                    <description>The assigned name of the client machine.
+<!-- Exported using version "6.5.314.4316" on Tue, Mar 29, 2016 10:36:59 AM  -->
+<saved_questions>
+  <saved_question>
+    <name>Palo Alto Networks Traps Version</name>
+    <public_flag>1</public_flag>
+    <issue_seconds>120</issue_seconds>
+    <issue_seconds_never_flag>0</issue_seconds_never_flag>
+    <expire_seconds>600</expire_seconds>
+    <merge_flag>0</merge_flag>
+    <drilldown_flag>0</drilldown_flag>
+    <default_tab>1</default_tab>
+    <default_grid_zoom_level>0</default_grid_zoom_level>
+    <default_line_zoom_level>12</default_line_zoom_level>
+    <text>Get Computer Name and Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version] from all machines</text>
+    <row_count_flag>0</row_count_flag>
+    <disabled_flag>1</disabled_flag>
+    <keep_seconds>3600</keep_seconds>
+    <meta_data/>
+    <question>
+      <text>Get Computer Name and Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version] from all machines</text>
+      <skip_lock_flag>0</skip_lock_flag>
+      <force_computer_id_flag>0</force_computer_id_flag>
+      <select_specs>
+        <select_spec>
+          <type>select</type>
+          <what_hash>3409330187</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <sensor>
+            <name>Computer Name</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>86400</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category>Reserved</category>
+            <exclude_from_parse>0</exclude_from_parse>
+            <delimiter/>
+            <description>The assigned name of the client machine.
 Example: workstation-1.company.com</description>
-                    <what_hash>3409330187</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns/>
-                    <queries>
-                      <sensor_query>
-                        <query>select CSName from win32_operatingsystem</query>
-                        <sensor_type>1</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters/>
-                  </sensor>
-                  <parameter_text/>
-                  <parameters/>
-                </select_spec>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>898599092</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <temp_sensor>
-                    <name>Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version]</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>900</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category/>
-                    <exclude_from_parse>1</exclude_from_parse>
-                    <delimiter>~~</delimiter>
-                    <description/>
-                    <what_hash>898599092</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns>
-                      <column>
-                        <name>User</name>
-                        <column_index>0</column_index>
-                        <hidden_flag>0</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                      <column>
-                        <name>Data</name>
-                        <column_index>1</column_index>
-                        <hidden_flag>0</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                      <column>
-                        <name>Type</name>
-                        <column_index>2</column_index>
-                        <hidden_flag>0</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                      <column>
-                        <name>Architecture</name>
-                        <column_index>3</column_index>
-                        <hidden_flag>0</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                      <column>
-                        <name>KeyPath</name>
-                        <column_index>4</column_index>
-                        <hidden_flag>0</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                      <column>
-                        <name>Value</name>
-                        <column_index>5</column_index>
-                        <hidden_flag>1</hidden_flag>
-                        <ignore_case_flag>1</ignore_case_flag>
-                        <exclude_from_parse>1</exclude_from_parse>
-                        <result_type>1</result_type>
-                      </column>
-                    </columns>
-                    <queries>
-                      <sensor_query>
-                        <query>'========================================
+            <what_hash>3409330187</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>select CSName from win32_operatingsystem</query>
+                <sensor_type>1</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters/>
+          </sensor>
+          <parameter_text/>
+          <parameters/>
+        </select_spec>
+        <select_spec>
+          <type>select</type>
+          <what_hash>898599092</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <temp_sensor>
+            <name>Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version]</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>900</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category/>
+            <exclude_from_parse>1</exclude_from_parse>
+            <delimiter>~~</delimiter>
+            <description/>
+            <what_hash>898599092</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns>
+              <column>
+                <name>User</name>
+                <column_index>0</column_index>
+                <hidden_flag>0</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+              <column>
+                <name>Data</name>
+                <column_index>1</column_index>
+                <hidden_flag>0</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+              <column>
+                <name>Type</name>
+                <column_index>2</column_index>
+                <hidden_flag>0</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+              <column>
+                <name>Architecture</name>
+                <column_index>3</column_index>
+                <hidden_flag>0</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+              <column>
+                <name>KeyPath</name>
+                <column_index>4</column_index>
+                <hidden_flag>0</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+              <column>
+                <name>Value</name>
+                <column_index>5</column_index>
+                <hidden_flag>1</hidden_flag>
+                <ignore_case_flag>1</ignore_case_flag>
+                <exclude_from_parse>1</exclude_from_parse>
+                <result_type>1</result_type>
+              </column>
+            </columns>
+            <queries>
+              <sensor_query>
+                <query>'========================================
 ' Registry Value Data
 '========================================
 
@@ -511,93 +487,93 @@ Function GetUserForSIDLocal(objReg,strSID)
 		GetUserForSIDLocal = False
 	End If
 End Function 'GetUserForSIDLocal</query>
-                        <sensor_type>4</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters>
-                      <param>
-                        <varname>||strKey||</varname>
-                        <value>HKLM\SOFTWARE\Cyvera\Client</value>
-                      </param>
-                      <param>
-                        <varname>||strValue||</varname>
-                        <value>Product Version</value>
-                      </param>
-                      <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\SOFTWARE\\Cyvera\\Client","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"Product Version","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-                    </parameters>
-                    <display_name>Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version]</display_name>
-                    <sensor>
-                      <name>Registry Value Data</name>
-                      <result_type>1</result_type>
-                      <seconds>86400</seconds>
-                      <seconds_never_flag>1</seconds_never_flag>
-                      <qseconds>900</qseconds>
-                      <event_flag>0</event_flag>
-                      <ignore_case_flag>1</ignore_case_flag>
-                      <weight>0</weight>
-                      <category>Registry</category>
-                      <exclude_from_parse>1</exclude_from_parse>
-                      <delimiter>~~</delimiter>
-                      <description>Returns the data of a supplied value in a supplied registry key.  If the hive is HKEY_USERS, it will attempt to output the user name associated with the key.  HKEY_CURRENT_USER will only return data for the SYSTEM account which the Tanium Client runs as.
+                <sensor_type>4</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters>
+              <param>
+                <varname>||strKey||</varname>
+                <value>HKLM\SOFTWARE\Cyvera\Client</value>
+              </param>
+              <param>
+                <varname>||strValue||</varname>
+                <value>Product Version</value>
+              </param>
+              <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\SOFTWARE\\Cyvera\\Client","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"Product Version","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+            </parameters>
+            <display_name>Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version]</display_name>
+            <sensor>
+              <name>Registry Value Data</name>
+              <result_type>1</result_type>
+              <seconds>86400</seconds>
+              <seconds_never_flag>1</seconds_never_flag>
+              <qseconds>900</qseconds>
+              <event_flag>0</event_flag>
+              <ignore_case_flag>1</ignore_case_flag>
+              <weight>0</weight>
+              <category>Registry</category>
+              <exclude_from_parse>1</exclude_from_parse>
+              <delimiter>~~</delimiter>
+              <description>Returns the data of a supplied value in a supplied registry key.  If the hive is HKEY_USERS, it will attempt to output the user name associated with the key.  HKEY_CURRENT_USER will only return data for the SYSTEM account which the Tanium Client runs as.
 Example: John | 4.1.314.7020 | REG_SZ|32-bit</description>
-                      <what_hash>1591958393</what_hash>
-                      <hidden_flag>0</hidden_flag>
-                      <columns>
-                        <column>
-                          <name>User</name>
-                          <column_index>0</column_index>
-                          <hidden_flag>0</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                        <column>
-                          <name>Data</name>
-                          <column_index>1</column_index>
-                          <hidden_flag>0</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                        <column>
-                          <name>Type</name>
-                          <column_index>2</column_index>
-                          <hidden_flag>0</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                        <column>
-                          <name>Architecture</name>
-                          <column_index>3</column_index>
-                          <hidden_flag>0</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                        <column>
-                          <name>KeyPath</name>
-                          <column_index>4</column_index>
-                          <hidden_flag>0</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                        <column>
-                          <name>Value</name>
-                          <column_index>5</column_index>
-                          <hidden_flag>1</hidden_flag>
-                          <ignore_case_flag>1</ignore_case_flag>
-                          <exclude_from_parse>1</exclude_from_parse>
-                          <result_type>1</result_type>
-                        </column>
-                      </columns>
-                      <queries>
-                        <sensor_query>
-                          <query>'========================================
+              <what_hash>1591958393</what_hash>
+              <hidden_flag>0</hidden_flag>
+              <columns>
+                <column>
+                  <name>User</name>
+                  <column_index>0</column_index>
+                  <hidden_flag>0</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+                <column>
+                  <name>Data</name>
+                  <column_index>1</column_index>
+                  <hidden_flag>0</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+                <column>
+                  <name>Type</name>
+                  <column_index>2</column_index>
+                  <hidden_flag>0</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+                <column>
+                  <name>Architecture</name>
+                  <column_index>3</column_index>
+                  <hidden_flag>0</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+                <column>
+                  <name>KeyPath</name>
+                  <column_index>4</column_index>
+                  <hidden_flag>0</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+                <column>
+                  <name>Value</name>
+                  <column_index>5</column_index>
+                  <hidden_flag>1</hidden_flag>
+                  <ignore_case_flag>1</ignore_case_flag>
+                  <exclude_from_parse>1</exclude_from_parse>
+                  <result_type>1</result_type>
+                </column>
+              </columns>
+              <queries>
+                <sensor_query>
+                  <query>'========================================
 ' Registry Value Data
 '========================================
 
@@ -921,219 +897,340 @@ Function GetUserForSIDLocal(objReg,strSID)
 		GetUserForSIDLocal = False
 	End If
 End Function 'GetUserForSIDLocal</query>
-                          <sensor_type>4</sensor_type>
-                          <os>0</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>4</sensor_type>
+                  <os>0</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","label":"Registry Key","helpString":"Enter the key path to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"helpString":"Value can not be blank","flags":"","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strValue","promptText":"e.g. Version. Use (Default) to get default value.","label":"Registry Value","helpString":"Enter the key value to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  ||strValue||  
 
 echo "N/A on Linux"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>1</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>1</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","label":"Registry Key","helpString":"Enter the key path to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"helpString":"Value can not be blank","flags":"","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strValue","promptText":"e.g. Version. Use (Default) to get default value.","label":"Registry Value","helpString":"Enter the key value to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  ||strValue||  
 
 echo "N/A on Mac"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>2</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>2</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","label":"Registry Key","helpString":"Enter the key path to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"helpString":"Value can not be blank","flags":"","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strValue","promptText":"e.g. Version. Use (Default) to get default value.","label":"Registry Value","helpString":"Enter the key value to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  ||strValue||  
 
 echo "N/A on Solaris"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>3</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>3</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","label":"Registry Key","helpString":"Enter the key path to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"helpString":"Value can not be blank","flags":"","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strValue","promptText":"e.g. Version. Use (Default) to get default value.","label":"Registry Value","helpString":"Enter the key value to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  ||strValue||  
 
 echo "N/A on AIX"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>4</os>
-                          <signature/>
-                        </sensor_query>
-                      </queries>
-                      <meta_data>
-                        <meta_data_item>
-                          <name>defined</name>
-                          <value>Tanium</value>
-                          <admin_flag>0</admin_flag>
-                        </meta_data_item>
-                      </meta_data>
-                      <parameters>
-                        <param>
-                          <varname>||strKey||</varname>
-                          <value/>
-                        </param>
-                        <param>
-                          <varname>||strValue||</varname>
-                          <value/>
-                        </param>
-                        <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-                      </parameters>
-                    </sensor>
-                  </temp_sensor>
-                  <parameter_text/>
-                  <parameters>
-                    <param>
-                      <varname>||strKey||</varname>
-                      <value>HKLM\SOFTWARE\Cyvera\Client</value>
-                    </param>
-                    <param>
-                      <varname>||strValue||</varname>
-                      <value>Product Version</value>
-                    </param>
-                  </parameters>
-                </select_spec>
-              </select_specs>
-            </question>
-            <packages/>
-          </saved_question>
-        </saved_questions>
-      </dashboard>
-      <dashboard>
-        <name>Traps Registry State</name>
-        <public_flag>0</public_flag>
-        <notify_flag>0</notify_flag>
-        <offline_flag>0</offline_flag>
-        <text/>
-        <saved_questions>
-          <saved_question>
-            <name>Palo Alto Networks Traps Registry Process State</name>
-            <public_flag>1</public_flag>
-            <issue_seconds>120</issue_seconds>
-            <issue_seconds_never_flag>0</issue_seconds_never_flag>
-            <expire_seconds>600</expire_seconds>
-            <merge_flag>0</merge_flag>
-            <drilldown_flag>0</drilldown_flag>
-            <default_tab>1</default_tab>
-            <default_grid_zoom_level>0</default_grid_zoom_level>
-            <default_line_zoom_level>12</default_line_zoom_level>
-            <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
-            <row_count_flag>0</row_count_flag>
-            <disabled_flag>1</disabled_flag>
-            <keep_seconds>3600</keep_seconds>
-            <meta_data/>
-            <question>
-              <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
-              <skip_lock_flag>0</skip_lock_flag>
-              <force_computer_id_flag>0</force_computer_id_flag>
-              <select_specs>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>3409330187</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <sensor>
-                    <name>Computer Name</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>86400</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category>Reserved</category>
-                    <exclude_from_parse>0</exclude_from_parse>
-                    <delimiter/>
-                    <description>The assigned name of the client machine.
+                  <sensor_type>6</sensor_type>
+                  <os>4</os>
+                  <signature/>
+                </sensor_query>
+              </queries>
+              <meta_data>
+                <meta_data_item>
+                  <name>defined</name>
+                  <value>Tanium</value>
+                  <admin_flag>0</admin_flag>
+                </meta_data_item>
+              </meta_data>
+              <parameters>
+                <param>
+                  <varname>||strKey||</varname>
+                  <value/>
+                </param>
+                <param>
+                  <varname>||strValue||</varname>
+                  <value/>
+                </param>
+                <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+              </parameters>
+            </sensor>
+          </temp_sensor>
+          <parameter_text/>
+          <parameters>
+            <param>
+              <varname>||strKey||</varname>
+              <value>HKLM\SOFTWARE\Cyvera\Client</value>
+            </param>
+            <param>
+              <varname>||strValue||</varname>
+              <value>Product Version</value>
+            </param>
+          </parameters>
+        </select_spec>
+      </select_specs>
+    </question>
+    <packages/>
+  </saved_question>
+  <saved_question>
+    <name>Palo Alto Networks Traps Services</name>
+    <public_flag>0</public_flag>
+    <issue_seconds>120</issue_seconds>
+    <issue_seconds_never_flag>0</issue_seconds_never_flag>
+    <expire_seconds>600</expire_seconds>
+    <merge_flag>0</merge_flag>
+    <drilldown_flag>0</drilldown_flag>
+    <default_tab>1</default_tab>
+    <default_grid_zoom_level>0</default_grid_zoom_level>
+    <default_line_zoom_level>12</default_line_zoom_level>
+    <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
+    <row_count_flag>0</row_count_flag>
+    <disabled_flag>1</disabled_flag>
+    <keep_seconds>3600</keep_seconds>
+    <meta_data/>
+    <question>
+      <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
+      <skip_lock_flag>0</skip_lock_flag>
+      <force_computer_id_flag>0</force_computer_id_flag>
+      <select_specs>
+        <select_spec>
+          <type>select</type>
+          <what_hash>3409330187</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <sensor>
+            <name>Computer Name</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>86400</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category>Reserved</category>
+            <exclude_from_parse>0</exclude_from_parse>
+            <delimiter/>
+            <description>The assigned name of the client machine.
 Example: workstation-1.company.com</description>
-                    <what_hash>3409330187</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns/>
-                    <queries>
-                      <sensor_query>
-                        <query>select CSName from win32_operatingsystem</query>
-                        <sensor_type>1</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters/>
-                  </sensor>
-                  <parameter_text/>
-                  <parameters/>
-                </select_spec>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>898599962</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <temp_sensor>
-                    <name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>900</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category/>
-                    <exclude_from_parse>1</exclude_from_parse>
-                    <delimiter>,</delimiter>
-                    <description/>
-                    <what_hash>898599962</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns/>
-                    <queries>
-                      <sensor_query>
-                        <query>'========================================
+            <what_hash>3409330187</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>select CSName from win32_operatingsystem</query>
+                <sensor_type>1</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters/>
+          </sensor>
+          <parameter_text/>
+          <parameters/>
+        </select_spec>
+        <select_spec>
+          <type>select</type>
+          <what_hash>2982090176</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <sensor>
+            <name>Palo Alto Networks Traps Services</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>900</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category>Miscellaneous</category>
+            <exclude_from_parse>1</exclude_from_parse>
+            <delimiter>,</delimiter>
+            <description/>
+            <what_hash>2982090176</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>Select DisplayName from Win32_Service Where Name='Cyserver' or Name='Cyverak' or Name='Cyvrmtgn' or Name='Cyvrfsfd' or Name='CyveraService' and State LIKE 'Running'</query>
+                <sensor_type>1</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters/>
+          </sensor>
+          <parameter_text/>
+          <parameters/>
+        </select_spec>
+      </select_specs>
+    </question>
+    <packages/>
+  </saved_question>
+  <saved_question>
+    <name>Palo Alto Networks Traps Registry Process State</name>
+    <public_flag>1</public_flag>
+    <issue_seconds>120</issue_seconds>
+    <issue_seconds_never_flag>0</issue_seconds_never_flag>
+    <expire_seconds>600</expire_seconds>
+    <merge_flag>0</merge_flag>
+    <drilldown_flag>0</drilldown_flag>
+    <default_tab>1</default_tab>
+    <default_grid_zoom_level>0</default_grid_zoom_level>
+    <default_line_zoom_level>12</default_line_zoom_level>
+    <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
+    <row_count_flag>0</row_count_flag>
+    <disabled_flag>1</disabled_flag>
+    <keep_seconds>3600</keep_seconds>
+    <meta_data/>
+    <question>
+      <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
+      <skip_lock_flag>0</skip_lock_flag>
+      <force_computer_id_flag>0</force_computer_id_flag>
+      <select_specs>
+        <select_spec>
+          <type>select</type>
+          <what_hash>3409330187</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <sensor>
+            <name>Computer Name</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>86400</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category>Reserved</category>
+            <exclude_from_parse>0</exclude_from_parse>
+            <delimiter/>
+            <description>The assigned name of the client machine.
+Example: workstation-1.company.com</description>
+            <what_hash>3409330187</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>select CSName from win32_operatingsystem</query>
+                <sensor_type>1</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters/>
+          </sensor>
+          <parameter_text/>
+          <parameters/>
+        </select_spec>
+        <select_spec>
+          <type>select</type>
+          <what_hash>898599962</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <temp_sensor>
+            <name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>900</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category/>
+            <exclude_from_parse>1</exclude_from_parse>
+            <delimiter>,</delimiter>
+            <description/>
+            <what_hash>898599962</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>'========================================
 ' Registry Key Exists
 '========================================
 
@@ -1320,39 +1417,39 @@ Function GetUserForSIDLocal(objReg,strSID)
 		GetUserForSIDLocal = False
 	End If
 End Function 'GetUserForSIDLocal</query>
-                        <sensor_type>4</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters>
-                      <param>
-                        <varname>||strKey||</varname>
-                        <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
-                      </param>
-                      <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\System\\Cyvera\\Policy\\Organization\\Process\\Default","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-                    </parameters>
-                    <display_name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</display_name>
-                    <sensor>
-                      <name>Registry Key Exists</name>
-                      <result_type>1</result_type>
-                      <seconds>86400</seconds>
-                      <seconds_never_flag>1</seconds_never_flag>
-                      <qseconds>900</qseconds>
-                      <event_flag>0</event_flag>
-                      <ignore_case_flag>1</ignore_case_flag>
-                      <weight>0</weight>
-                      <category>Registry</category>
-                      <exclude_from_parse>1</exclude_from_parse>
-                      <delimiter>,</delimiter>
-                      <description>Returns True if the Registry Key exists, False if not.</description>
-                      <what_hash>2490353155</what_hash>
-                      <hidden_flag>0</hidden_flag>
-                      <columns/>
-                      <queries>
-                        <sensor_query>
-                          <query>'========================================
+                <sensor_type>4</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters>
+              <param>
+                <varname>||strKey||</varname>
+                <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
+              </param>
+              <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\System\\Cyvera\\Policy\\Organization\\Process\\Default","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+            </parameters>
+            <display_name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</display_name>
+            <sensor>
+              <name>Registry Key Exists</name>
+              <result_type>1</result_type>
+              <seconds>86400</seconds>
+              <seconds_never_flag>1</seconds_never_flag>
+              <qseconds>900</qseconds>
+              <event_flag>0</event_flag>
+              <ignore_case_flag>1</ignore_case_flag>
+              <weight>0</weight>
+              <category>Registry</category>
+              <exclude_from_parse>1</exclude_from_parse>
+              <delimiter>,</delimiter>
+              <description>Returns True if the Registry Key exists, False if not.</description>
+              <what_hash>2490353155</what_hash>
+              <hidden_flag>0</hidden_flag>
+              <columns/>
+              <queries>
+                <sensor_query>
+                  <query>'========================================
 ' Registry Key Exists
 '========================================
 
@@ -1539,228 +1636,85 @@ Function GetUserForSIDLocal(objReg,strSID)
 		GetUserForSIDLocal = False
 	End If
 End Function 'GetUserForSIDLocal</query>
-                          <sensor_type>4</sensor_type>
-                          <os>0</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>4</sensor_type>
+                  <os>0</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  
 
 echo "N/A on Linux"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>1</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>1</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  
 
 echo "N/A on Mac"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>2</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>2</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  
 
 echo "N/A on Solaris"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>3</os>
-                          <signature/>
-                        </sensor_query>
-                        <sensor_query>
-                          <query>#!/bin/sh
+                  <sensor_type>6</sensor_type>
+                  <os>3</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
 
 # THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
 # {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
 # ||strKey||  
 
 echo "N/A on AIX"</query>
-                          <sensor_type>6</sensor_type>
-                          <os>4</os>
-                          <signature/>
-                        </sensor_query>
-                      </queries>
-                      <meta_data>
-                        <meta_data_item>
-                          <name>defined</name>
-                          <value>Tanium</value>
-                          <admin_flag>0</admin_flag>
-                        </meta_data_item>
-                      </meta_data>
-                      <parameters>
-                        <param>
-                          <varname>||strKey||</varname>
-                          <value/>
-                        </param>
-                        <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-                      </parameters>
-                    </sensor>
-                  </temp_sensor>
-                  <parameter_text/>
-                  <parameters>
-                    <param>
-                      <varname>||strKey||</varname>
-                      <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
-                    </param>
-                  </parameters>
-                </select_spec>
-              </select_specs>
-            </question>
-            <packages/>
-          </saved_question>
-        </saved_questions>
-      </dashboard>
-      <dashboard>
-        <name>Traps Services</name>
-        <public_flag>0</public_flag>
-        <notify_flag>0</notify_flag>
-        <offline_flag>0</offline_flag>
-        <text/>
-        <saved_questions>
-          <saved_question>
-            <name>Palo Alto Networks Traps Services</name>
-            <public_flag>0</public_flag>
-            <issue_seconds>120</issue_seconds>
-            <issue_seconds_never_flag>0</issue_seconds_never_flag>
-            <expire_seconds>600</expire_seconds>
-            <merge_flag>0</merge_flag>
-            <drilldown_flag>0</drilldown_flag>
-            <default_tab>1</default_tab>
-            <default_grid_zoom_level>0</default_grid_zoom_level>
-            <default_line_zoom_level>12</default_line_zoom_level>
-            <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
-            <row_count_flag>0</row_count_flag>
-            <disabled_flag>1</disabled_flag>
-            <keep_seconds>3600</keep_seconds>
-            <meta_data/>
-            <question>
-              <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
-              <skip_lock_flag>0</skip_lock_flag>
-              <force_computer_id_flag>0</force_computer_id_flag>
-              <select_specs>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>3409330187</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <sensor>
-                    <name>Computer Name</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>86400</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category>Reserved</category>
-                    <exclude_from_parse>0</exclude_from_parse>
-                    <delimiter/>
-                    <description>The assigned name of the client machine.
-Example: workstation-1.company.com</description>
-                    <what_hash>3409330187</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns/>
-                    <queries>
-                      <sensor_query>
-                        <query>select CSName from win32_operatingsystem</query>
-                        <sensor_type>1</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters/>
-                  </sensor>
-                  <parameter_text/>
-                  <parameters/>
-                </select_spec>
-                <select_spec>
-                  <type>select</type>
-                  <what_hash>2982090176</what_hash>
-                  <how_reg_ex/>
-                  <max_age_seconds>0</max_age_seconds>
-                  <not_flag>0</not_flag>
-                  <greater_flag>0</greater_flag>
-                  <equal_flag>0</equal_flag>
-                  <ignore_case_flag>1</ignore_case_flag>
-                  <substring_flag>0</substring_flag>
-                  <all_values_flag>0</all_values_flag>
-                  <all_times_flag>0</all_times_flag>
-                  <utf8_flag>0</utf8_flag>
-                  <delimiter>0</delimiter>
-                  <delimiter_index>0</delimiter_index>
-                  <result_type>1</result_type>
-                  <aggregation>0</aggregation>
-                  <substring_start>0</substring_start>
-                  <substring_length>0</substring_length>
-                  <how_name/>
-                  <start_time/>
-                  <end_time/>
-                  <sensor>
-                    <name>Palo Alto Networks Traps Services</name>
-                    <result_type>1</result_type>
-                    <seconds>86400</seconds>
-                    <seconds_never_flag>1</seconds_never_flag>
-                    <qseconds>900</qseconds>
-                    <event_flag>0</event_flag>
-                    <ignore_case_flag>1</ignore_case_flag>
-                    <weight>0</weight>
-                    <category>Miscellaneous</category>
-                    <exclude_from_parse>1</exclude_from_parse>
-                    <delimiter>,</delimiter>
-                    <description/>
-                    <what_hash>2982090176</what_hash>
-                    <hidden_flag>0</hidden_flag>
-                    <columns/>
-                    <queries>
-                      <sensor_query>
-                        <query>Select DisplayName from Win32_Service Where Name='Cyserver' or Name='Cyverak' or Name='Cyvrmtgn' or Name='Cyvrfsfd' or Name='CyveraService' and State LIKE 'Running'</query>
-                        <sensor_type>1</sensor_type>
-                        <os>0</os>
-                        <signature/>
-                      </sensor_query>
-                    </queries>
-                    <meta_data/>
-                    <parameters/>
-                  </sensor>
-                  <parameter_text/>
-                  <parameters/>
-                </select_spec>
-              </select_specs>
-            </question>
-            <packages/>
-          </saved_question>
-        </saved_questions>
-      </dashboard>
-    </dashboards>
-  </dashboard_group>
-</dashboard_groups>
+                  <sensor_type>6</sensor_type>
+                  <os>4</os>
+                  <signature/>
+                </sensor_query>
+              </queries>
+              <meta_data>
+                <meta_data_item>
+                  <name>defined</name>
+                  <value>Tanium</value>
+                  <admin_flag>0</admin_flag>
+                </meta_data_item>
+              </meta_data>
+              <parameters>
+                <param>
+                  <varname>||strKey||</varname>
+                  <value/>
+                </param>
+                <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+              </parameters>
+            </sensor>
+          </temp_sensor>
+          <parameter_text/>
+          <parameters>
+            <param>
+              <varname>||strKey||</varname>
+              <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
+            </param>
+          </parameters>
+        </select_spec>
+      </select_specs>
+    </question>
+    <packages/>
+  </saved_question>
+</saved_questions>
