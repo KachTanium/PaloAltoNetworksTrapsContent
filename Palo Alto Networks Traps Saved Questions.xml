@@ -1,606 +1,5 @@
-<!-- Exported using version "6.5.314.4316" on Wed, Feb 17, 2016 11:08:04 AM  -->
+<!-- Exported using version "6.5.314.4316" on Tue, Mar 29, 2016 10:36:59 AM  -->
 <saved_questions>
-  <saved_question>
-    <name>Palo Alto Networks Traps Registry Process State</name>
-    <public_flag>1</public_flag>
-    <issue_seconds>120</issue_seconds>
-    <issue_seconds_never_flag>0</issue_seconds_never_flag>
-    <expire_seconds>600</expire_seconds>
-    <merge_flag>0</merge_flag>
-    <drilldown_flag>0</drilldown_flag>
-    <default_tab>1</default_tab>
-    <default_grid_zoom_level>0</default_grid_zoom_level>
-    <default_line_zoom_level>12</default_line_zoom_level>
-    <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
-    <row_count_flag>0</row_count_flag>
-    <disabled_flag>1</disabled_flag>
-    <keep_seconds>3600</keep_seconds>
-    <meta_data/>
-    <question>
-      <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
-      <skip_lock_flag>0</skip_lock_flag>
-      <force_computer_id_flag>0</force_computer_id_flag>
-      <select_specs>
-        <select_spec>
-          <type>select</type>
-          <what_hash>3409330187</what_hash>
-          <how_reg_ex/>
-          <max_age_seconds>0</max_age_seconds>
-          <not_flag>0</not_flag>
-          <greater_flag>0</greater_flag>
-          <equal_flag>0</equal_flag>
-          <ignore_case_flag>1</ignore_case_flag>
-          <substring_flag>0</substring_flag>
-          <all_values_flag>0</all_values_flag>
-          <all_times_flag>0</all_times_flag>
-          <utf8_flag>0</utf8_flag>
-          <delimiter>0</delimiter>
-          <delimiter_index>0</delimiter_index>
-          <result_type>1</result_type>
-          <aggregation>0</aggregation>
-          <substring_start>0</substring_start>
-          <substring_length>0</substring_length>
-          <how_name/>
-          <start_time/>
-          <end_time/>
-          <sensor>
-            <name>Computer Name</name>
-            <result_type>1</result_type>
-            <seconds>86400</seconds>
-            <seconds_never_flag>1</seconds_never_flag>
-            <qseconds>86400</qseconds>
-            <event_flag>0</event_flag>
-            <ignore_case_flag>1</ignore_case_flag>
-            <weight>0</weight>
-            <category>Reserved</category>
-            <exclude_from_parse>0</exclude_from_parse>
-            <delimiter/>
-            <description>The assigned name of the client machine.
-Example: workstation-1.company.com</description>
-            <what_hash>3409330187</what_hash>
-            <hidden_flag>0</hidden_flag>
-            <columns/>
-            <queries>
-              <sensor_query>
-                <query>select CSName from win32_operatingsystem</query>
-                <sensor_type>1</sensor_type>
-                <os>0</os>
-                <signature/>
-              </sensor_query>
-            </queries>
-            <meta_data/>
-            <parameters/>
-          </sensor>
-          <parameter_text/>
-          <parameters/>
-        </select_spec>
-        <select_spec>
-          <type>select</type>
-          <what_hash>898394207</what_hash>
-          <how_reg_ex/>
-          <max_age_seconds>0</max_age_seconds>
-          <not_flag>0</not_flag>
-          <greater_flag>0</greater_flag>
-          <equal_flag>0</equal_flag>
-          <ignore_case_flag>1</ignore_case_flag>
-          <substring_flag>0</substring_flag>
-          <all_values_flag>0</all_values_flag>
-          <all_times_flag>0</all_times_flag>
-          <utf8_flag>0</utf8_flag>
-          <delimiter>0</delimiter>
-          <delimiter_index>0</delimiter_index>
-          <result_type>1</result_type>
-          <aggregation>0</aggregation>
-          <substring_start>0</substring_start>
-          <substring_length>0</substring_length>
-          <how_name/>
-          <start_time/>
-          <end_time/>
-          <temp_sensor>
-            <name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</name>
-            <result_type>1</result_type>
-            <seconds>86400</seconds>
-            <seconds_never_flag>1</seconds_never_flag>
-            <qseconds>900</qseconds>
-            <event_flag>0</event_flag>
-            <ignore_case_flag>1</ignore_case_flag>
-            <weight>0</weight>
-            <category/>
-            <exclude_from_parse>1</exclude_from_parse>
-            <delimiter>,</delimiter>
-            <description/>
-            <what_hash>898394207</what_hash>
-            <hidden_flag>0</hidden_flag>
-            <columns/>
-            <queries>
-              <sensor_query>
-                <query>'========================================
-' Registry Key Exists
-'========================================
-
-'Columns:
-' User | Subkey Name | Architecture | KeyPath
-
-strKey = unescape("HKLM%5cSystem%5cCyvera%5cPolicy%5cOrganization%5cProcess%5cDefault")
-
-'strKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Tanium\Tanium Server"
-'strKey = "HKEY_CURRENT_USER\Software\TortoiseSVN"
-
-strSep = "|"
-
-
-'Constants for value types
-Const REG_SZ        = 1
-Const REG_EXPAND_SZ = 2
-Const REG_BINARY    = 3
-Const REG_DWORD     = 4
-Const REG_MULTI_SZ  = 7
-Const REG_QWORD     = 11
-
-
-'Split up strKey into the hive constant and the registry key
-words = Split(strKey, "\")
-strHive = words(0)
-constHive = GetHiveConst(strHive)
-
-strKey = Right(strKey, Len(strKey) - Len(strHive) -1)
-
-'Global for Username
-Dim strUserName
-strUserName = "N/A" ' default value, overridden if HKEY_USERS hive
-
-
-'Set up registry objects for 32-bit, then check value
-'Need to check all values of key in order to get type
-Set objCtx = GetObjCtx(32)
-Set objReg = GetObjReg(objCtx)
-If strHive = "HKEY_USERS" Then
-' go through each User's hive
-	For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
-		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
-			strUserName = GetUserForSIDLocal(objReg,strUserKey)
-			If strUserName = False Then strUserName = strUserKey
-			strFullUserKey = strUserKey&amp;"\"&amp;strKey
-			hasValues32 = RegKeyExists(objReg, constHive, strFullUserKey)
-			If hasValues32 Then hasAnyResult = True
-		End If
-	Next
-Else ' was another hive
-	hasValues32 = RegKeyExists(objReg, constHive, strKey)
-	If hasValues32 Then hasAnyResult = True
-End If
-
-If Is64 Then
-	Set objCtx = GetObjCtx(64)
-	Set objReg = GetObjReg(objCtx)
-	If strHive = "HKEY_USERS" Then
-	' go through each User's hive in 64-bit context
-		For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
-		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
-				strUserName = GetUserForSIDLocal(objReg,strUserKey)
-				If strUserName = False Then strUserName = strUserKey
-				strFullUserKey = strUserKey&amp;"\"&amp;strKey
-				hasValues64 = RegKeyExists(objReg, constHive, strFullUserKey)
-				If hasValues64 Then hasAnyResult = True	
-			End If
-		Next
-	Else ' was another hive	
-		hasValues64 = RegKeyExists(objReg, constHive, strKey)
-		If hasValues64 Then hasAnyResult = True	
-	End If
-End If
-
-If (hasAnyResult) Then
-	WScript.Echo "True"
-Else
-	WScript.Echo "False"
-End If
-
-Function RegKeyExists(objRegistry, sHive, sRegKey)
-	Dim aValueNames, aValueTypes
-	If objRegistry.EnumValues(sHive, sRegKey, aValueNames, aValueTypes) = 0 Then
-		RegKeyExists = True
-	Else
-		RegKeyExists = False
-	End If
-End Function
-
-Function GetObjCtx(intArch)
-	Dim objCtx
-	Set objCtx = CreateObject("WbemScripting.SWbemNamedValueSet")
-	objCtx.Add "__ProviderArchitecture", intArch
-	objCtx.Add "__RequiredArchitecture", TRUE
-	Set GetObjCtx = objCtx
-End Function
-
-Function GetObjReg(objCtx)
-	Dim objLocator, objServices
-	Set objLocator = CreateObject("Wbemscripting.SWbemLocator")
-	Set objServices = objLocator.ConnectServer("","root\default","","",,,,objCtx)
-	Set GetObjReg = objServices.Get("StdRegProv") 
-End Function
-
-Function GetSubKeys(objReg, objCtx, constHive, strKey)
-	Dim Inparams, Outparams
-	Set Inparams = objReg.Methods_("EnumKey").Inparameters
-	Inparams.Hdefkey = constHive
-	Inparams.sSubkeyname = strKey
-	Set Outparams = objReg.ExecMethod_("EnumKey", Inparams,,objCtx)
-	GetSubKeys = Outparams.sNames
-End Function
-
-Function Is64 
-	Dim objWMIService, colItems, objItem
-	Set objWMIService = GetObject("winmgmts:\\.\root\CIMV2")
-	Set colItems = objWMIService.ExecQuery("Select SystemType from Win32_ComputerSystem")    
-	For Each objItem In colItems
-		If InStr(LCase(objItem.SystemType), "x64") &gt; 0 Then
-			Is64 = True
-		Else
-			Is64 = False
-		End If		
-	Next
-End Function
-
-
-Function GetHiveConst(hive)
-	Const HKEY_CLASSES_ROOT   = &amp;H80000000
-	Const HKEY_CURRENT_USER   = &amp;H80000001
-	Const HKEY_LOCAL_MACHINE  = &amp;H80000002
-	Const HKEY_USERS          = &amp;H80000003
-
-	Select Case UCase(hive)
-		Case "HKLM"
-			GetHiveConst = HKEY_LOCAL_MACHINE
-		Case "HKEY_LOCAL_MACHINE"
-			GetHiveConst = HKEY_LOCAL_MACHINE
-		Case "HKCR"
-			GetHiveConst = HKEY_CLASSES_ROOT
-		Case "HKEY_CLASSES_ROOT"
-			GetHiveConst = HKEY_CLASSES_ROOT
-		Case "HKEY_CURRENT_USER"
-			GetHiveConst = HKEY_CURRENT_USER
-		Case "HKEY_USERS"
-			GetHiveConst = HKEY_USERS
-	End Select
-	
-	If IsEmpty(GetHiveConst) Then
-		WScript.Echo "Invalid registry hive: " &amp; hive
-		WScript.Quit
-	End If
-End Function
-
-Function GetUserForSIDLocal(objReg,strSID)
-' This function converts a SID to a user name
-' by doing a registry lookup, avoiding an LDAP query
-' this will fail in the case where the user's name was changed in AD
-' as they will still have their old home directory name
-
-	Const HKLM = &amp;h80000002
-	
-	Dim strHiveListKey,strUserData,intDatPos,intFinalBackslashPos
-	
-	strHiveListKey = "SYSTEM\CurrentControlSet\Control\hivelist"
-	objReg.GetStringValue HKLM,strHiveListKey,"\Registry\User\"&amp;strSID,strUserData
-	If Not IsNull(strUserData) Then
-	' strUserData would look like
-	' \Device\HarddiskVolume2\Users\user.name\NTUSER.DAT
-		intDatPos = InStr(UCase(strUserData),"\NTUSER.DAT")
-		' strip off the dat file
-		If intDatPos &gt; 0 Then ' must be in string
-			strUserData = Left(strUserData,intDatPos - 1)
-			' find last backslash
-			intFinalBackslashPos = InStrRev(strUserData,"\")
-			' get right from that pos
-			strUserData = Right(strUserData,Len(strUserData) - intFinalBackslashPos)
-			GetUserForSIDLocal = strUserData
-		Else
-			strUserData = False
-		End If
-	Else
-		GetUserForSIDLocal = False
-	End If
-End Function 'GetUserForSIDLocal</query>
-                <sensor_type>4</sensor_type>
-                <os>0</os>
-                <signature/>
-              </sensor_query>
-            </queries>
-            <meta_data/>
-            <parameters>
-              <param>
-                <varname>||strKey||</varname>
-                <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
-              </param>
-              <parameter_text>{"parameters":[{"promptText":"e.g. HKEY_USERS\\Software\\Key","restrict":null,"helpString":"Enter the registry key to query","validationExpressions":[{"flags":"","helpString":"Value must be at least 5 characters","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strKey","value":"HKLM\\System\\Cyvera\\Policy\\Organization\\Process\\Default","label":"Registry Key","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-            </parameters>
-            <display_name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</display_name>
-            <sensor>
-              <name>Registry Key Exists</name>
-              <result_type>1</result_type>
-              <seconds>86400</seconds>
-              <seconds_never_flag>1</seconds_never_flag>
-              <qseconds>900</qseconds>
-              <event_flag>0</event_flag>
-              <ignore_case_flag>1</ignore_case_flag>
-              <weight>0</weight>
-              <category>Registry</category>
-              <exclude_from_parse>1</exclude_from_parse>
-              <delimiter>,</delimiter>
-              <description>Returns True if the Registry Key exists, False if not.</description>
-              <what_hash>2490353155</what_hash>
-              <hidden_flag>0</hidden_flag>
-              <columns/>
-              <queries>
-                <sensor_query>
-                  <query>'========================================
-' Registry Key Exists
-'========================================
-
-'Columns:
-' User | Subkey Name | Architecture | KeyPath
-
-strKey = unescape("||strKey||")
-
-'strKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Tanium\Tanium Server"
-'strKey = "HKEY_CURRENT_USER\Software\TortoiseSVN"
-
-strSep = "|"
-
-
-'Constants for value types
-Const REG_SZ        = 1
-Const REG_EXPAND_SZ = 2
-Const REG_BINARY    = 3
-Const REG_DWORD     = 4
-Const REG_MULTI_SZ  = 7
-Const REG_QWORD     = 11
-
-
-'Split up strKey into the hive constant and the registry key
-words = Split(strKey, "\")
-strHive = words(0)
-constHive = GetHiveConst(strHive)
-
-strKey = Right(strKey, Len(strKey) - Len(strHive) -1)
-
-'Global for Username
-Dim strUserName
-strUserName = "N/A" ' default value, overridden if HKEY_USERS hive
-
-
-'Set up registry objects for 32-bit, then check value
-'Need to check all values of key in order to get type
-Set objCtx = GetObjCtx(32)
-Set objReg = GetObjReg(objCtx)
-If strHive = "HKEY_USERS" Then
-' go through each User's hive
-	For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
-		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
-			strUserName = GetUserForSIDLocal(objReg,strUserKey)
-			If strUserName = False Then strUserName = strUserKey
-			strFullUserKey = strUserKey&amp;"\"&amp;strKey
-			hasValues32 = RegKeyExists(objReg, constHive, strFullUserKey)
-			If hasValues32 Then hasAnyResult = True
-		End If
-	Next
-Else ' was another hive
-	hasValues32 = RegKeyExists(objReg, constHive, strKey)
-	If hasValues32 Then hasAnyResult = True
-End If
-
-If Is64 Then
-	Set objCtx = GetObjCtx(64)
-	Set objReg = GetObjReg(objCtx)
-	If strHive = "HKEY_USERS" Then
-	' go through each User's hive in 64-bit context
-		For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
-		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
-				strUserName = GetUserForSIDLocal(objReg,strUserKey)
-				If strUserName = False Then strUserName = strUserKey
-				strFullUserKey = strUserKey&amp;"\"&amp;strKey
-				hasValues64 = RegKeyExists(objReg, constHive, strFullUserKey)
-				If hasValues64 Then hasAnyResult = True	
-			End If
-		Next
-	Else ' was another hive	
-		hasValues64 = RegKeyExists(objReg, constHive, strKey)
-		If hasValues64 Then hasAnyResult = True	
-	End If
-End If
-
-If (hasAnyResult) Then
-	WScript.Echo "True"
-Else
-	WScript.Echo "False"
-End If
-
-Function RegKeyExists(objRegistry, sHive, sRegKey)
-	Dim aValueNames, aValueTypes
-	If objRegistry.EnumValues(sHive, sRegKey, aValueNames, aValueTypes) = 0 Then
-		RegKeyExists = True
-	Else
-		RegKeyExists = False
-	End If
-End Function
-
-Function GetObjCtx(intArch)
-	Dim objCtx
-	Set objCtx = CreateObject("WbemScripting.SWbemNamedValueSet")
-	objCtx.Add "__ProviderArchitecture", intArch
-	objCtx.Add "__RequiredArchitecture", TRUE
-	Set GetObjCtx = objCtx
-End Function
-
-Function GetObjReg(objCtx)
-	Dim objLocator, objServices
-	Set objLocator = CreateObject("Wbemscripting.SWbemLocator")
-	Set objServices = objLocator.ConnectServer("","root\default","","",,,,objCtx)
-	Set GetObjReg = objServices.Get("StdRegProv") 
-End Function
-
-Function GetSubKeys(objReg, objCtx, constHive, strKey)
-	Dim Inparams, Outparams
-	Set Inparams = objReg.Methods_("EnumKey").Inparameters
-	Inparams.Hdefkey = constHive
-	Inparams.sSubkeyname = strKey
-	Set Outparams = objReg.ExecMethod_("EnumKey", Inparams,,objCtx)
-	GetSubKeys = Outparams.sNames
-End Function
-
-Function Is64 
-	Dim objWMIService, colItems, objItem
-	Set objWMIService = GetObject("winmgmts:\\.\root\CIMV2")
-	Set colItems = objWMIService.ExecQuery("Select SystemType from Win32_ComputerSystem")    
-	For Each objItem In colItems
-		If InStr(LCase(objItem.SystemType), "x64") &gt; 0 Then
-			Is64 = True
-		Else
-			Is64 = False
-		End If		
-	Next
-End Function
-
-
-Function GetHiveConst(hive)
-	Const HKEY_CLASSES_ROOT   = &amp;H80000000
-	Const HKEY_CURRENT_USER   = &amp;H80000001
-	Const HKEY_LOCAL_MACHINE  = &amp;H80000002
-	Const HKEY_USERS          = &amp;H80000003
-
-	Select Case UCase(hive)
-		Case "HKLM"
-			GetHiveConst = HKEY_LOCAL_MACHINE
-		Case "HKEY_LOCAL_MACHINE"
-			GetHiveConst = HKEY_LOCAL_MACHINE
-		Case "HKCR"
-			GetHiveConst = HKEY_CLASSES_ROOT
-		Case "HKEY_CLASSES_ROOT"
-			GetHiveConst = HKEY_CLASSES_ROOT
-		Case "HKEY_CURRENT_USER"
-			GetHiveConst = HKEY_CURRENT_USER
-		Case "HKEY_USERS"
-			GetHiveConst = HKEY_USERS
-	End Select
-	
-	If IsEmpty(GetHiveConst) Then
-		WScript.Echo "Invalid registry hive: " &amp; hive
-		WScript.Quit
-	End If
-End Function
-
-Function GetUserForSIDLocal(objReg,strSID)
-' This function converts a SID to a user name
-' by doing a registry lookup, avoiding an LDAP query
-' this will fail in the case where the user's name was changed in AD
-' as they will still have their old home directory name
-
-	Const HKLM = &amp;h80000002
-	
-	Dim strHiveListKey,strUserData,intDatPos,intFinalBackslashPos
-	
-	strHiveListKey = "SYSTEM\CurrentControlSet\Control\hivelist"
-	objReg.GetStringValue HKLM,strHiveListKey,"\Registry\User\"&amp;strSID,strUserData
-	If Not IsNull(strUserData) Then
-	' strUserData would look like
-	' \Device\HarddiskVolume2\Users\user.name\NTUSER.DAT
-		intDatPos = InStr(UCase(strUserData),"\NTUSER.DAT")
-		' strip off the dat file
-		If intDatPos &gt; 0 Then ' must be in string
-			strUserData = Left(strUserData,intDatPos - 1)
-			' find last backslash
-			intFinalBackslashPos = InStrRev(strUserData,"\")
-			' get right from that pos
-			strUserData = Right(strUserData,Len(strUserData) - intFinalBackslashPos)
-			GetUserForSIDLocal = strUserData
-		Else
-			strUserData = False
-		End If
-	Else
-		GetUserForSIDLocal = False
-	End If
-End Function 'GetUserForSIDLocal</query>
-                  <sensor_type>4</sensor_type>
-                  <os>0</os>
-                  <signature/>
-                </sensor_query>
-                <sensor_query>
-                  <query>#!/bin/sh
-
-# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
-# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
-# ||strKey||  
-
-echo "N/A on Linux"</query>
-                  <sensor_type>6</sensor_type>
-                  <os>1</os>
-                  <signature/>
-                </sensor_query>
-                <sensor_query>
-                  <query>#!/bin/sh
-
-# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
-# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
-# ||strKey||  
-
-echo "N/A on Mac"</query>
-                  <sensor_type>6</sensor_type>
-                  <os>2</os>
-                  <signature/>
-                </sensor_query>
-                <sensor_query>
-                  <query>#!/bin/sh
-
-# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
-# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
-# ||strKey||  
-
-echo "N/A on Solaris"</query>
-                  <sensor_type>6</sensor_type>
-                  <os>3</os>
-                  <signature/>
-                </sensor_query>
-                <sensor_query>
-                  <query>#!/bin/sh
-
-# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
-# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
-# ||strKey||  
-
-echo "N/A on AIX"</query>
-                  <sensor_type>6</sensor_type>
-                  <os>4</os>
-                  <signature/>
-                </sensor_query>
-              </queries>
-              <meta_data>
-                <meta_data_item>
-                  <name>defined</name>
-                  <value>Tanium</value>
-                  <admin_flag>0</admin_flag>
-                </meta_data_item>
-              </meta_data>
-              <parameters>
-                <param>
-                  <varname>||strKey||</varname>
-                  <value/>
-                </param>
-                <parameter_text>{"parameters":[{"promptText":"e.g. HKEY_USERS\\Software\\Key","restrict":null,"helpString":"Enter the registry key to query","validationExpressions":[{"flags":"","helpString":"Value must be at least 5 characters","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strKey","value":"","label":"Registry Key","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
-              </parameters>
-            </sensor>
-          </temp_sensor>
-          <parameter_text/>
-          <parameters>
-            <param>
-              <varname>||strKey||</varname>
-              <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
-            </param>
-          </parameters>
-        </select_spec>
-      </select_specs>
-    </question>
-    <packages/>
-  </saved_question>
   <saved_question>
     <name>Palo Alto Networks Traps Version</name>
     <public_flag>1</public_flag>
@@ -677,7 +76,7 @@ Example: workstation-1.company.com</description>
         </select_spec>
         <select_spec>
           <type>select</type>
-          <what_hash>898396817</what_hash>
+          <what_hash>898599092</what_hash>
           <how_reg_ex/>
           <max_age_seconds>0</max_age_seconds>
           <not_flag>0</not_flag>
@@ -710,7 +109,7 @@ Example: workstation-1.company.com</description>
             <exclude_from_parse>1</exclude_from_parse>
             <delimiter>~~</delimiter>
             <description/>
-            <what_hash>898396817</what_hash>
+            <what_hash>898599092</what_hash>
             <hidden_flag>0</hidden_flag>
             <columns>
               <column>
@@ -1103,7 +502,7 @@ End Function 'GetUserForSIDLocal</query>
                 <varname>||strValue||</varname>
                 <value>Product Version</value>
               </param>
-              <parameter_text>{"parameters":[{"promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","restrict":null,"helpString":"Enter the key path to query","validationExpressions":[{"flags":"","helpString":"Value must be at least 5 characters","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strKey","value":"HKLM\\SOFTWARE\\Cyvera\\Client","label":"Registry Key","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"},{"promptText":"e.g. Version. Use (Default) to get default value.","restrict":null,"helpString":"Enter the key value to query","validationExpressions":[{"flags":"","helpString":"Value can not be blank","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strValue","value":"Product Version","label":"Registry Value","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+              <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\SOFTWARE\\Cyvera\\Client","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"Product Version","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
             </parameters>
             <display_name>Registry Value Data[HKLM\SOFTWARE\Cyvera\Client, Product Version]</display_name>
             <sensor>
@@ -1567,7 +966,7 @@ echo "N/A on AIX"</query>
                   <varname>||strValue||</varname>
                   <value/>
                 </param>
-                <parameter_text>{"parameters":[{"promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","restrict":null,"helpString":"Enter the key path to query","validationExpressions":[{"flags":"","helpString":"Value must be at least 5 characters","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strKey","value":"","label":"Registry Key","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"},{"promptText":"e.g. Version. Use (Default) to get default value.","restrict":null,"helpString":"Enter the key value to query","validationExpressions":[{"flags":"","helpString":"Value can not be blank","expression":"^\\S","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","maxChars":0,"key":"strValue","value":"","label":"Registry Value","model":"com.tanium.components.parameters::TextInputParameter","parameterType":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+                <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_LOCAL_MACHINE\\Software\\Microsoft","helpString":"Enter the key path to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"},{"validationExpressions":[{"flags":"","expression":"^\\S","helpString":"Value can not be blank","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Value","maxChars":0,"key":"strValue","restrict":null,"value":"","promptText":"e.g. Version. Use (Default) to get default value.","helpString":"Enter the key value to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
               </parameters>
             </sensor>
           </temp_sensor>
@@ -1588,8 +987,8 @@ echo "N/A on AIX"</query>
     <packages/>
   </saved_question>
   <saved_question>
-    <name>Palo Alto Networs Traps Services</name>
-    <public_flag>1</public_flag>
+    <name>Palo Alto Networks Traps Services</name>
+    <public_flag>0</public_flag>
     <issue_seconds>120</issue_seconds>
     <issue_seconds_never_flag>0</issue_seconds_never_flag>
     <expire_seconds>600</expire_seconds>
@@ -1598,13 +997,13 @@ echo "N/A on AIX"</query>
     <default_tab>1</default_tab>
     <default_grid_zoom_level>0</default_grid_zoom_level>
     <default_line_zoom_level>12</default_line_zoom_level>
-    <text>Get Computer Name and Palo Alto Networs Traps Services from all machines</text>
+    <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
     <row_count_flag>0</row_count_flag>
     <disabled_flag>1</disabled_flag>
     <keep_seconds>3600</keep_seconds>
     <meta_data/>
     <question>
-      <text>Get Computer Name and Palo Alto Networs Traps Services from all machines</text>
+      <text>Get Computer Name and Palo Alto Networks Traps Services from all machines</text>
       <skip_lock_flag>0</skip_lock_flag>
       <force_computer_id_flag>0</force_computer_id_flag>
       <select_specs>
@@ -1663,7 +1062,7 @@ Example: workstation-1.company.com</description>
         </select_spec>
         <select_spec>
           <type>select</type>
-          <what_hash>349604381</what_hash>
+          <what_hash>2982090176</what_hash>
           <how_reg_ex/>
           <max_age_seconds>0</max_age_seconds>
           <not_flag>0</not_flag>
@@ -1684,11 +1083,11 @@ Example: workstation-1.company.com</description>
           <start_time/>
           <end_time/>
           <sensor>
-            <name>Palo Alto Networs Traps Services</name>
+            <name>Palo Alto Networks Traps Services</name>
             <result_type>1</result_type>
             <seconds>86400</seconds>
             <seconds_never_flag>1</seconds_never_flag>
-            <qseconds>60</qseconds>
+            <qseconds>900</qseconds>
             <event_flag>0</event_flag>
             <ignore_case_flag>1</ignore_case_flag>
             <weight>0</weight>
@@ -1696,7 +1095,7 @@ Example: workstation-1.company.com</description>
             <exclude_from_parse>1</exclude_from_parse>
             <delimiter>,</delimiter>
             <description/>
-            <what_hash>349604381</what_hash>
+            <what_hash>2982090176</what_hash>
             <hidden_flag>0</hidden_flag>
             <columns/>
             <queries>
@@ -1712,6 +1111,607 @@ Example: workstation-1.company.com</description>
           </sensor>
           <parameter_text/>
           <parameters/>
+        </select_spec>
+      </select_specs>
+    </question>
+    <packages/>
+  </saved_question>
+  <saved_question>
+    <name>Palo Alto Networks Traps Registry Process State</name>
+    <public_flag>1</public_flag>
+    <issue_seconds>120</issue_seconds>
+    <issue_seconds_never_flag>0</issue_seconds_never_flag>
+    <expire_seconds>600</expire_seconds>
+    <merge_flag>0</merge_flag>
+    <drilldown_flag>0</drilldown_flag>
+    <default_tab>1</default_tab>
+    <default_grid_zoom_level>0</default_grid_zoom_level>
+    <default_line_zoom_level>12</default_line_zoom_level>
+    <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
+    <row_count_flag>0</row_count_flag>
+    <disabled_flag>1</disabled_flag>
+    <keep_seconds>3600</keep_seconds>
+    <meta_data/>
+    <question>
+      <text>Get Computer Name and Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default] from all machines</text>
+      <skip_lock_flag>0</skip_lock_flag>
+      <force_computer_id_flag>0</force_computer_id_flag>
+      <select_specs>
+        <select_spec>
+          <type>select</type>
+          <what_hash>3409330187</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <sensor>
+            <name>Computer Name</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>86400</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category>Reserved</category>
+            <exclude_from_parse>0</exclude_from_parse>
+            <delimiter/>
+            <description>The assigned name of the client machine.
+Example: workstation-1.company.com</description>
+            <what_hash>3409330187</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>select CSName from win32_operatingsystem</query>
+                <sensor_type>1</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters/>
+          </sensor>
+          <parameter_text/>
+          <parameters/>
+        </select_spec>
+        <select_spec>
+          <type>select</type>
+          <what_hash>898599962</what_hash>
+          <how_reg_ex/>
+          <max_age_seconds>0</max_age_seconds>
+          <not_flag>0</not_flag>
+          <greater_flag>0</greater_flag>
+          <equal_flag>0</equal_flag>
+          <ignore_case_flag>1</ignore_case_flag>
+          <substring_flag>0</substring_flag>
+          <all_values_flag>0</all_values_flag>
+          <all_times_flag>0</all_times_flag>
+          <utf8_flag>0</utf8_flag>
+          <delimiter>0</delimiter>
+          <delimiter_index>0</delimiter_index>
+          <result_type>1</result_type>
+          <aggregation>0</aggregation>
+          <substring_start>0</substring_start>
+          <substring_length>0</substring_length>
+          <how_name/>
+          <start_time/>
+          <end_time/>
+          <temp_sensor>
+            <name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</name>
+            <result_type>1</result_type>
+            <seconds>86400</seconds>
+            <seconds_never_flag>1</seconds_never_flag>
+            <qseconds>900</qseconds>
+            <event_flag>0</event_flag>
+            <ignore_case_flag>1</ignore_case_flag>
+            <weight>0</weight>
+            <category/>
+            <exclude_from_parse>1</exclude_from_parse>
+            <delimiter>,</delimiter>
+            <description/>
+            <what_hash>898599962</what_hash>
+            <hidden_flag>0</hidden_flag>
+            <columns/>
+            <queries>
+              <sensor_query>
+                <query>'========================================
+' Registry Key Exists
+'========================================
+
+'Columns:
+' User | Subkey Name | Architecture | KeyPath
+
+strKey = unescape("HKLM%5cSystem%5cCyvera%5cPolicy%5cOrganization%5cProcess%5cDefault")
+
+'strKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Tanium\Tanium Server"
+'strKey = "HKEY_CURRENT_USER\Software\TortoiseSVN"
+
+strSep = "|"
+
+
+'Constants for value types
+Const REG_SZ        = 1
+Const REG_EXPAND_SZ = 2
+Const REG_BINARY    = 3
+Const REG_DWORD     = 4
+Const REG_MULTI_SZ  = 7
+Const REG_QWORD     = 11
+
+
+'Split up strKey into the hive constant and the registry key
+words = Split(strKey, "\")
+strHive = words(0)
+constHive = GetHiveConst(strHive)
+
+strKey = Right(strKey, Len(strKey) - Len(strHive) -1)
+
+'Global for Username
+Dim strUserName
+strUserName = "N/A" ' default value, overridden if HKEY_USERS hive
+
+
+'Set up registry objects for 32-bit, then check value
+'Need to check all values of key in order to get type
+Set objCtx = GetObjCtx(32)
+Set objReg = GetObjReg(objCtx)
+If strHive = "HKEY_USERS" Then
+' go through each User's hive
+	For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
+		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
+			strUserName = GetUserForSIDLocal(objReg,strUserKey)
+			If strUserName = False Then strUserName = strUserKey
+			strFullUserKey = strUserKey&amp;"\"&amp;strKey
+			hasValues32 = RegKeyExists(objReg, constHive, strFullUserKey)
+			If hasValues32 Then hasAnyResult = True
+		End If
+	Next
+Else ' was another hive
+	hasValues32 = RegKeyExists(objReg, constHive, strKey)
+	If hasValues32 Then hasAnyResult = True
+End If
+
+If Is64 Then
+	Set objCtx = GetObjCtx(64)
+	Set objReg = GetObjReg(objCtx)
+	If strHive = "HKEY_USERS" Then
+	' go through each User's hive in 64-bit context
+		For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
+		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
+				strUserName = GetUserForSIDLocal(objReg,strUserKey)
+				If strUserName = False Then strUserName = strUserKey
+				strFullUserKey = strUserKey&amp;"\"&amp;strKey
+				hasValues64 = RegKeyExists(objReg, constHive, strFullUserKey)
+				If hasValues64 Then hasAnyResult = True	
+			End If
+		Next
+	Else ' was another hive	
+		hasValues64 = RegKeyExists(objReg, constHive, strKey)
+		If hasValues64 Then hasAnyResult = True	
+	End If
+End If
+
+If (hasAnyResult) Then
+	WScript.Echo "True"
+Else
+	WScript.Echo "False"
+End If
+
+Function RegKeyExists(objRegistry, sHive, sRegKey)
+	Dim aValueNames, aValueTypes
+	If objRegistry.EnumValues(sHive, sRegKey, aValueNames, aValueTypes) = 0 Then
+		RegKeyExists = True
+	Else
+		RegKeyExists = False
+	End If
+End Function
+
+Function GetObjCtx(intArch)
+	Dim objCtx
+	Set objCtx = CreateObject("WbemScripting.SWbemNamedValueSet")
+	objCtx.Add "__ProviderArchitecture", intArch
+	objCtx.Add "__RequiredArchitecture", TRUE
+	Set GetObjCtx = objCtx
+End Function
+
+Function GetObjReg(objCtx)
+	Dim objLocator, objServices
+	Set objLocator = CreateObject("Wbemscripting.SWbemLocator")
+	Set objServices = objLocator.ConnectServer("","root\default","","",,,,objCtx)
+	Set GetObjReg = objServices.Get("StdRegProv") 
+End Function
+
+Function GetSubKeys(objReg, objCtx, constHive, strKey)
+	Dim Inparams, Outparams
+	Set Inparams = objReg.Methods_("EnumKey").Inparameters
+	Inparams.Hdefkey = constHive
+	Inparams.sSubkeyname = strKey
+	Set Outparams = objReg.ExecMethod_("EnumKey", Inparams,,objCtx)
+	GetSubKeys = Outparams.sNames
+End Function
+
+Function Is64 
+	Dim objWMIService, colItems, objItem
+	Set objWMIService = GetObject("winmgmts:\\.\root\CIMV2")
+	Set colItems = objWMIService.ExecQuery("Select SystemType from Win32_ComputerSystem")    
+	For Each objItem In colItems
+		If InStr(LCase(objItem.SystemType), "x64") &gt; 0 Then
+			Is64 = True
+		Else
+			Is64 = False
+		End If		
+	Next
+End Function
+
+
+Function GetHiveConst(hive)
+	Const HKEY_CLASSES_ROOT   = &amp;H80000000
+	Const HKEY_CURRENT_USER   = &amp;H80000001
+	Const HKEY_LOCAL_MACHINE  = &amp;H80000002
+	Const HKEY_USERS          = &amp;H80000003
+
+	Select Case UCase(hive)
+		Case "HKLM"
+			GetHiveConst = HKEY_LOCAL_MACHINE
+		Case "HKEY_LOCAL_MACHINE"
+			GetHiveConst = HKEY_LOCAL_MACHINE
+		Case "HKCR"
+			GetHiveConst = HKEY_CLASSES_ROOT
+		Case "HKEY_CLASSES_ROOT"
+			GetHiveConst = HKEY_CLASSES_ROOT
+		Case "HKEY_CURRENT_USER"
+			GetHiveConst = HKEY_CURRENT_USER
+		Case "HKEY_USERS"
+			GetHiveConst = HKEY_USERS
+	End Select
+	
+	If IsEmpty(GetHiveConst) Then
+		WScript.Echo "Invalid registry hive: " &amp; hive
+		WScript.Quit
+	End If
+End Function
+
+Function GetUserForSIDLocal(objReg,strSID)
+' This function converts a SID to a user name
+' by doing a registry lookup, avoiding an LDAP query
+' this will fail in the case where the user's name was changed in AD
+' as they will still have their old home directory name
+
+	Const HKLM = &amp;h80000002
+	
+	Dim strHiveListKey,strUserData,intDatPos,intFinalBackslashPos
+	
+	strHiveListKey = "SYSTEM\CurrentControlSet\Control\hivelist"
+	objReg.GetStringValue HKLM,strHiveListKey,"\Registry\User\"&amp;strSID,strUserData
+	If Not IsNull(strUserData) Then
+	' strUserData would look like
+	' \Device\HarddiskVolume2\Users\user.name\NTUSER.DAT
+		intDatPos = InStr(UCase(strUserData),"\NTUSER.DAT")
+		' strip off the dat file
+		If intDatPos &gt; 0 Then ' must be in string
+			strUserData = Left(strUserData,intDatPos - 1)
+			' find last backslash
+			intFinalBackslashPos = InStrRev(strUserData,"\")
+			' get right from that pos
+			strUserData = Right(strUserData,Len(strUserData) - intFinalBackslashPos)
+			GetUserForSIDLocal = strUserData
+		Else
+			strUserData = False
+		End If
+	Else
+		GetUserForSIDLocal = False
+	End If
+End Function 'GetUserForSIDLocal</query>
+                <sensor_type>4</sensor_type>
+                <os>0</os>
+                <signature/>
+              </sensor_query>
+            </queries>
+            <meta_data/>
+            <parameters>
+              <param>
+                <varname>||strKey||</varname>
+                <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
+              </param>
+              <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"HKLM\\System\\Cyvera\\Policy\\Organization\\Process\\Default","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+            </parameters>
+            <display_name>Registry Key Exists[HKLM\System\Cyvera\Policy\Organization\Process\Default]</display_name>
+            <sensor>
+              <name>Registry Key Exists</name>
+              <result_type>1</result_type>
+              <seconds>86400</seconds>
+              <seconds_never_flag>1</seconds_never_flag>
+              <qseconds>900</qseconds>
+              <event_flag>0</event_flag>
+              <ignore_case_flag>1</ignore_case_flag>
+              <weight>0</weight>
+              <category>Registry</category>
+              <exclude_from_parse>1</exclude_from_parse>
+              <delimiter>,</delimiter>
+              <description>Returns True if the Registry Key exists, False if not.</description>
+              <what_hash>2490353155</what_hash>
+              <hidden_flag>0</hidden_flag>
+              <columns/>
+              <queries>
+                <sensor_query>
+                  <query>'========================================
+' Registry Key Exists
+'========================================
+
+'Columns:
+' User | Subkey Name | Architecture | KeyPath
+
+strKey = unescape("||strKey||")
+
+'strKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Tanium\Tanium Server"
+'strKey = "HKEY_CURRENT_USER\Software\TortoiseSVN"
+
+strSep = "|"
+
+
+'Constants for value types
+Const REG_SZ        = 1
+Const REG_EXPAND_SZ = 2
+Const REG_BINARY    = 3
+Const REG_DWORD     = 4
+Const REG_MULTI_SZ  = 7
+Const REG_QWORD     = 11
+
+
+'Split up strKey into the hive constant and the registry key
+words = Split(strKey, "\")
+strHive = words(0)
+constHive = GetHiveConst(strHive)
+
+strKey = Right(strKey, Len(strKey) - Len(strHive) -1)
+
+'Global for Username
+Dim strUserName
+strUserName = "N/A" ' default value, overridden if HKEY_USERS hive
+
+
+'Set up registry objects for 32-bit, then check value
+'Need to check all values of key in order to get type
+Set objCtx = GetObjCtx(32)
+Set objReg = GetObjReg(objCtx)
+If strHive = "HKEY_USERS" Then
+' go through each User's hive
+	For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
+		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
+			strUserName = GetUserForSIDLocal(objReg,strUserKey)
+			If strUserName = False Then strUserName = strUserKey
+			strFullUserKey = strUserKey&amp;"\"&amp;strKey
+			hasValues32 = RegKeyExists(objReg, constHive, strFullUserKey)
+			If hasValues32 Then hasAnyResult = True
+		End If
+	Next
+Else ' was another hive
+	hasValues32 = RegKeyExists(objReg, constHive, strKey)
+	If hasValues32 Then hasAnyResult = True
+End If
+
+If Is64 Then
+	Set objCtx = GetObjCtx(64)
+	Set objReg = GetObjReg(objCtx)
+	If strHive = "HKEY_USERS" Then
+	' go through each User's hive in 64-bit context
+		For Each strUserKey In GetSubKeys(objReg, objCtx, constHive, "")
+		If Not InStr(strUserKey,"_Classes") &gt; 0 Then ' ignore _Classes entries
+				strUserName = GetUserForSIDLocal(objReg,strUserKey)
+				If strUserName = False Then strUserName = strUserKey
+				strFullUserKey = strUserKey&amp;"\"&amp;strKey
+				hasValues64 = RegKeyExists(objReg, constHive, strFullUserKey)
+				If hasValues64 Then hasAnyResult = True	
+			End If
+		Next
+	Else ' was another hive	
+		hasValues64 = RegKeyExists(objReg, constHive, strKey)
+		If hasValues64 Then hasAnyResult = True	
+	End If
+End If
+
+If (hasAnyResult) Then
+	WScript.Echo "True"
+Else
+	WScript.Echo "False"
+End If
+
+Function RegKeyExists(objRegistry, sHive, sRegKey)
+	Dim aValueNames, aValueTypes
+	If objRegistry.EnumValues(sHive, sRegKey, aValueNames, aValueTypes) = 0 Then
+		RegKeyExists = True
+	Else
+		RegKeyExists = False
+	End If
+End Function
+
+Function GetObjCtx(intArch)
+	Dim objCtx
+	Set objCtx = CreateObject("WbemScripting.SWbemNamedValueSet")
+	objCtx.Add "__ProviderArchitecture", intArch
+	objCtx.Add "__RequiredArchitecture", TRUE
+	Set GetObjCtx = objCtx
+End Function
+
+Function GetObjReg(objCtx)
+	Dim objLocator, objServices
+	Set objLocator = CreateObject("Wbemscripting.SWbemLocator")
+	Set objServices = objLocator.ConnectServer("","root\default","","",,,,objCtx)
+	Set GetObjReg = objServices.Get("StdRegProv") 
+End Function
+
+Function GetSubKeys(objReg, objCtx, constHive, strKey)
+	Dim Inparams, Outparams
+	Set Inparams = objReg.Methods_("EnumKey").Inparameters
+	Inparams.Hdefkey = constHive
+	Inparams.sSubkeyname = strKey
+	Set Outparams = objReg.ExecMethod_("EnumKey", Inparams,,objCtx)
+	GetSubKeys = Outparams.sNames
+End Function
+
+Function Is64 
+	Dim objWMIService, colItems, objItem
+	Set objWMIService = GetObject("winmgmts:\\.\root\CIMV2")
+	Set colItems = objWMIService.ExecQuery("Select SystemType from Win32_ComputerSystem")    
+	For Each objItem In colItems
+		If InStr(LCase(objItem.SystemType), "x64") &gt; 0 Then
+			Is64 = True
+		Else
+			Is64 = False
+		End If		
+	Next
+End Function
+
+
+Function GetHiveConst(hive)
+	Const HKEY_CLASSES_ROOT   = &amp;H80000000
+	Const HKEY_CURRENT_USER   = &amp;H80000001
+	Const HKEY_LOCAL_MACHINE  = &amp;H80000002
+	Const HKEY_USERS          = &amp;H80000003
+
+	Select Case UCase(hive)
+		Case "HKLM"
+			GetHiveConst = HKEY_LOCAL_MACHINE
+		Case "HKEY_LOCAL_MACHINE"
+			GetHiveConst = HKEY_LOCAL_MACHINE
+		Case "HKCR"
+			GetHiveConst = HKEY_CLASSES_ROOT
+		Case "HKEY_CLASSES_ROOT"
+			GetHiveConst = HKEY_CLASSES_ROOT
+		Case "HKEY_CURRENT_USER"
+			GetHiveConst = HKEY_CURRENT_USER
+		Case "HKEY_USERS"
+			GetHiveConst = HKEY_USERS
+	End Select
+	
+	If IsEmpty(GetHiveConst) Then
+		WScript.Echo "Invalid registry hive: " &amp; hive
+		WScript.Quit
+	End If
+End Function
+
+Function GetUserForSIDLocal(objReg,strSID)
+' This function converts a SID to a user name
+' by doing a registry lookup, avoiding an LDAP query
+' this will fail in the case where the user's name was changed in AD
+' as they will still have their old home directory name
+
+	Const HKLM = &amp;h80000002
+	
+	Dim strHiveListKey,strUserData,intDatPos,intFinalBackslashPos
+	
+	strHiveListKey = "SYSTEM\CurrentControlSet\Control\hivelist"
+	objReg.GetStringValue HKLM,strHiveListKey,"\Registry\User\"&amp;strSID,strUserData
+	If Not IsNull(strUserData) Then
+	' strUserData would look like
+	' \Device\HarddiskVolume2\Users\user.name\NTUSER.DAT
+		intDatPos = InStr(UCase(strUserData),"\NTUSER.DAT")
+		' strip off the dat file
+		If intDatPos &gt; 0 Then ' must be in string
+			strUserData = Left(strUserData,intDatPos - 1)
+			' find last backslash
+			intFinalBackslashPos = InStrRev(strUserData,"\")
+			' get right from that pos
+			strUserData = Right(strUserData,Len(strUserData) - intFinalBackslashPos)
+			GetUserForSIDLocal = strUserData
+		Else
+			strUserData = False
+		End If
+	Else
+		GetUserForSIDLocal = False
+	End If
+End Function 'GetUserForSIDLocal</query>
+                  <sensor_type>4</sensor_type>
+                  <os>0</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
+# ||strKey||  
+
+echo "N/A on Linux"</query>
+                  <sensor_type>6</sensor_type>
+                  <os>1</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
+# ||strKey||  
+
+echo "N/A on Mac"</query>
+                  <sensor_type>6</sensor_type>
+                  <os>2</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
+# ||strKey||  
+
+echo "N/A on Solaris"</query>
+                  <sensor_type>6</sensor_type>
+                  <os>3</os>
+                  <signature/>
+                </sensor_query>
+                <sensor_query>
+                  <query>#!/bin/sh
+
+# THIS IS A STUB - NOT INTENDED AS FUNCTIONAL - NA
+# {"parameters":[{"validationExpressions":[{"helpString":"Value must be at least 5 characters","flags":"","expression":"\\S{5}","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"key":"strKey","promptText":"e.g. HKEY_USERS\\Software\\Key","label":"Registry Key","helpString":"Enter the registry key to query","value":"","defaultValue":"","restrict":null,"maxChars":0,"parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}
+# ||strKey||  
+
+echo "N/A on AIX"</query>
+                  <sensor_type>6</sensor_type>
+                  <os>4</os>
+                  <signature/>
+                </sensor_query>
+              </queries>
+              <meta_data>
+                <meta_data_item>
+                  <name>defined</name>
+                  <value>Tanium</value>
+                  <admin_flag>0</admin_flag>
+                </meta_data_item>
+              </meta_data>
+              <parameters>
+                <param>
+                  <varname>||strKey||</varname>
+                  <value/>
+                </param>
+                <parameter_text>{"parameters":[{"validationExpressions":[{"flags":"","expression":"\\S{5}","helpString":"Value must be at least 5 characters","parameterType":"com.tanium.models::ValidationExpression","model":"com.tanium.models::ValidationExpression"}],"defaultValue":"","label":"Registry Key","maxChars":0,"key":"strKey","restrict":null,"value":"","promptText":"e.g. HKEY_USERS\\Software\\Key","helpString":"Enter the registry key to query","parameterType":"com.tanium.components.parameters::TextInputParameter","model":"com.tanium.components.parameters::TextInputParameter"}],"parameterType":"com.tanium.components.parameters::ParametersArray","model":"com.tanium.components.parameters::ParametersArray"}</parameter_text>
+              </parameters>
+            </sensor>
+          </temp_sensor>
+          <parameter_text/>
+          <parameters>
+            <param>
+              <varname>||strKey||</varname>
+              <value>HKLM\System\Cyvera\Policy\Organization\Process\Default</value>
+            </param>
+          </parameters>
         </select_spec>
       </select_specs>
     </question>
